@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <img src="download.jpg" alt="Alexandria University Logo" class="logo">
+        <h2>Alexandria University - Faculty of Computer and Data Science</h2>
+        <form id="login-form">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="id" placeholder="ID" required>
+            <input type="text" id="department" placeholder="Department" required>
+            <input type="text" id="cgpa" placeholder="CGPA" required>
+            <input type="text" id="age" placeholder="Age" required>
+            <button type="submit">Login</button>
+        </form>
+        <div id="user-info"></div> <!-- Container for displaying user info -->
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Get form inputs
+            var name = document.getElementById('name').value;
+            var id = document.getElementById('id').value;
+            var department = document.getElementById('department').value;
+            var cgpa = document.getElementById('cgpa').value;
+            var age = document.getElementById('age').value;
+            
+            // Display user info
+            var userInfo = document.getElementById('user-info');
+            userInfo.innerHTML = '<h3>User Information:</h3>' +
+                                 '<p>Name: ' + name + '</p>' +
+                                 '<p>ID: ' + id + '</p>' +
+                                 '<p>Department: ' + department + '</p>' +
+                                 '<p>CGPA: ' + cgpa + '</p>' +
+                                 '<p>Age: ' + age + '</p>';
+            
+            // Redirect to exams timetable page
+            window.location.href = '{{ url_for("exams_timetable") }}';
+        });
+    </script>
+</body>
+</html>
